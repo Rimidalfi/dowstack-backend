@@ -1,0 +1,33 @@
+{
+  "name": "dowstack-backend",
+  "version": "1.0.0",
+  "description": "Backend of finance app DowStack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rimidalfi/dowstack-backend.git"
+  },
+  "keywords": [
+    "Finances"
+  ],
+  "author": "Wladimir Janowitsch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rimidalfi/dowstack-backend/issues"
+  },
+  "homepage": "https://github.com/Rimidalfi/dowstack-backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
