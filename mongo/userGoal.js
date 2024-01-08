@@ -1,4 +1,4 @@
-import {goalModel} from "./schemas";
+import { goalModel } from "./schemas.js";
 
 async function createGoal(goalData){
     try{
@@ -6,7 +6,7 @@ async function createGoal(goalData){
         const result = await newGoal.save();
         console.log("Goal created ✨",result);
     }catch(err){
-        console.error("Error while creating goal:", err.message);
+        console.error("ERROR❗️ creating goal:", err.message);
     }
 };
 
@@ -15,7 +15,7 @@ async function readGoal(userId){
         const read = await goalModel.find({user_id:userId});
         console.log("Goals:",read);
     }catch(err){
-        console.error("Error fetching user Goals",err.message)
+        console.error("ERROR❗️ fetching goal",err.message)
     }
 };
 
@@ -24,7 +24,7 @@ async function updateGoal(goalId,updateData){
         const update = await goalModel.findByIdAndUpdate(goalId,updateData,{new:true});
         console.log("Goal updated:",update)
     }catch(err){
-        console.error("Error while updating Goal",err.message)
+        console.error("ERROR❗️ updating goal",err.message)
     }
 };
 
@@ -33,7 +33,7 @@ async function deleteGoal(goalId){
         const del = await goalModel.findByIdAndDelete(goalId);
         console.log("Goal deleted:", del)
     }catch(err){
-        console.error("Error while deleting Goal",err.message)
+        console.error("ERROR❗️ deleting goal",err.message)
     }
 };
 
