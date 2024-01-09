@@ -1,5 +1,5 @@
 import { comparePw } from "../encryption.js";
-import { readUser } from "../mongo/user.js";
+import { readUserByMail } from "../mongo/user.js";
 
 const msg1 = "Successful Login ✅";
 const msg2 = "User not found! 🙅‍♂️";
@@ -31,7 +31,7 @@ async function userAuth (user, clientData){
 const login = async (req,res)=>{
 
     const clientData = req.body
-    const user = await readUser(clientData)
+    const user = await readUserByMail(clientData)
     // console.log(user)
     if (user !== null){
         console.log(`User ${user.username} found!`)

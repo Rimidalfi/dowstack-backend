@@ -1,6 +1,7 @@
 import express from "express";
-import login from "../controller/login.js";
-import registration from "../controller/registration.js";
+import login from "../controller/userLogin.js";
+import registration from "../controller/UserRegistration.js";
+import {allUsers,oneUser} from "../controller/userController.js";
 
 const userRouter = express.Router();
 const savingGoalRouter = express.Router();
@@ -14,7 +15,8 @@ const userRegistration = express.Router();
 
 userLogin.post('/',login);
 userRegistration.post('/',registration);
-userRouter.get('/',(req,res)=> res.send("Users"));
+userRouter.get('/all',allUsers);
+userRouter.get('/:id',oneUser);
 savingGoalRouter.get('/',(req,res)=> res.send("Saving Goals"));
 incomeRouter.get('/',(req,res)=> res.send("Income"));
 expensesRouter.get('/',(req,res)=> res.send("Expenses"));
