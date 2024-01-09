@@ -15,7 +15,7 @@ const registration = async (req,res)=>{
             createUser(clientData)
             res.json({msg:"User created",user:clientData.username,created:true,resCode:0})
         }else{
-            res.json({msg:"Email alrerady exists",user:clientData.email,created:false,resCode:1})
+            res.json({msg:"Email alrerady exists",email:clientData.email,created:false,resCode:1})
         }
     }else{
         res.json({msg:"User NOT created",user:clientData.username,created:false,resCode:2})
