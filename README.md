@@ -1,8 +1,8 @@
-# Backend of Webapplication **"DowStack"**
+# DowStack API:
 
-## DowStack API:
+## Users:
 
-### Basic Get Operations
+### GET Operations
 
 GetAllUsers:
 `https://dowstack.onrender.com/users/all`
@@ -12,7 +12,11 @@ GetSingleUserById:
 
 ---
 
-### Login Operations
+### PUT Operations
+
+---
+
+### Login Operations (POST)
 
 URL: `https://dowstack.onrender.com/login`
 
@@ -33,7 +37,7 @@ resCodes:
 
 ---
 
-### Registration Operations
+### Registration Operations (POST)
 
 URL: `https://dowstack.onrender.com/register`
 
