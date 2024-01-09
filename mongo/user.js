@@ -46,10 +46,13 @@ async function userExists(clientData){
     }catch(err){
         console.error(err.message)
     };
+}; 
+async function updateUserById(userId,updateData){
+    try{
+        const userUpdate = await userModel.updateOne({_id:userId},updateData)
+        console.log(userUpdate)
+    }catch(err){
+        console.error("ERROR!",err.message)
+    };
 };
-//WIP  
-async function updateUser(){
-    const userUpdate = await userModel.updateOne({_id:"6595d4eaa045ef760f46dd15"},{password:"$2b$13$08BqoheXXA3Pr07Jquzym.t1YKFrVnEpuCV6GP.Jze6Fd/JjReA2a"})
-    console.log(userUpdate)
-};
-export {createUser,readUserByMail,readUserById,readAllUsers,userExists}
+export {createUser,readUserByMail,readUserById,readAllUsers,userExists,updateUserById}
