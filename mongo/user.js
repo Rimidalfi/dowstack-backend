@@ -50,9 +50,20 @@ async function userExists(clientData){
 async function updateUserById(userId,updateData){
     try{
         const userUpdate = await userModel.updateOne({_id:userId},updateData)
-        console.log(userUpdate)
     }catch(err){
         console.error("ERROR!",err.message)
     };
 };
-export {createUser,readUserByMail,readUserById,readAllUsers,userExists,updateUserById}
+async function deleteUserById(userId){
+    try{
+        const deleteUser = await userModel.deleteOne({_id:userId})
+        let result = null
+        // console.log(result)
+        deleteUser.deletedCount === 1 ? result = true : result = false
+        // console.log(result)
+        return result
+    }catch(err){
+        console.error("ERROR!",err.message)
+    };
+};
+export {createUser,readUserByMail,readUserById,readAllUsers,userExists,updateUserById,deleteUserById}
