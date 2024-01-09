@@ -28,7 +28,7 @@ async function userAuth (user, clientData){
     };
 };
 
-const Login = async (req,res)=>{
+const login = async (req,res)=>{
 
     const clientData = req.body
     const user = await readUser(clientData)
@@ -48,4 +48,4 @@ const Login = async (req,res)=>{
         res.json(loginRespond(msg2,false,1));
     }
 }
-export default Login
+export default login
