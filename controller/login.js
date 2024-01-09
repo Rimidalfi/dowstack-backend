@@ -24,7 +24,7 @@ async function userAuth (user, clientData){
         const hash = user.password
         return comparePw(password,hash)
     }catch(err){
-        console.error(err.message)
+        console.error("ERROR: ",err.message)
     };
 };
 

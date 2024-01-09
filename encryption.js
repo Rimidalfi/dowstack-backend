@@ -6,7 +6,7 @@ async function hashPw (password,workfactor){
         console.log("Successful hash ✅",hash)
         return hash
     }catch(err){
-        "ERROR❗️ hashing PW",err.message
+        console.log("ERROR❗️ hashing PW",err.message)
     }
 };
 
@@ -14,14 +14,14 @@ async function comparePw(password,hash){
     try{
         const comparison = await bcrypt.compare(password,hash)
         if(comparison){
-            console.log("access granted ✅")
+            // console.log("access granted ✅")
             return true
         }else{
-            console.log("access denied ❌")
+            // console.log("access denied ❌")
             return false
         }
     }catch(err){
-        "ERROR❗️ verifing password",err.message
+        console.log("ERROR❗️ verifing password",err.message)
     }
 };
 // console.log(await hashPw("plainjane1234",13))

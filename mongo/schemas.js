@@ -6,10 +6,10 @@ mongoose.connect(process.env.MONGO_DB_URI);
 
 const userSchema = new mongoose.Schema({
     username:{type: String, required: true},
-    firstname:{type: String, required: true},
-    lastname:{type: String, required: true},
+    firstname:String,
+    lastname:String,
     email:{type: String, required: true},
-    password:String,
+    password:{type: String, required: true},
     balance:Number
 })
 
