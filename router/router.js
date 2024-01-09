@@ -1,7 +1,7 @@
 import express from "express";
 import login from "../controller/userLogin.js";
 import registration from "../controller/UserRegistration.js";
-import {allUsers,oneUser,updateUser} from "../controller/userController.js";
+import {allUsers,deleteUser,oneUser,updateUser} from "../controller/userController.js";
 
 
 const userRouter = express.Router();
@@ -19,6 +19,7 @@ userRegistration.post('/',registration);
 userRouter.get('/all',allUsers);
 userRouter.get('/:id',oneUser);
 userRouter.put('/settings',updateUser);
+userRouter.delete('/delete',deleteUser);
 savingGoalRouter.get('/',(req,res)=> res.send("Saving Goals"));
 incomeRouter.get('/',(req,res)=> res.send("Income"));
 expensesRouter.get('/',(req,res)=> res.send("Expenses"));

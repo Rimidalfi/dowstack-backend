@@ -1,4 +1,4 @@
-import { readAllUsers,readUserById,updateUserById} from "../mongo/user.js"
+import { readAllUsers,readUserById,updateUserById,deleteUserById} from "../mongo/user.js"
 import { userExists } from "../mongo/user.js";
 import { hashPw } from "../encryption.js";
 
@@ -9,7 +9,7 @@ const oneUser = async (req,res)=>{
     const userId = req.params.id
     // console.log("One User",userId)
     const singleUser = await readUserById(userId)
-    console.log("Single User",singleUser)
+    // console.log("Single User",singleUser)
     res.send(singleUser)
 };
 const updateUser = async (req,res)=>{
@@ -39,6 +39,11 @@ const updateUser = async (req,res)=>{
         res.json({msg:"User Data updated!"})
     };
 };
-
-export {allUsers,oneUser,updateUser}
+const deleteUser = async (req,res)=>{
+    const userId = req.body.userId
+    console.log(userId)
+    const result = await deleteUserById(userId)
+    result ? res.json({msg:"user deleted"}) : res.json({msg:" NO user deleted"})
+};
+export {allUsers,oneUser,updateUser,deleteUser}
 

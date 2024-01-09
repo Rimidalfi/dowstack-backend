@@ -2,20 +2,6 @@
 
 ## Users:
 
-### GET Operations
-
-GetAllUsers:
-`https://dowstack.onrender.com/users/all`
-
-GetSingleUserById:
-`https://dowstack.onrender.com/users/:id`
-
----
-
-### PUT Operations
-
----
-
 ### Login Operations (POST)
 
 URL: `https://dowstack.onrender.com/login`
@@ -75,3 +61,49 @@ Example:
 	"created": true,
 	"resCode": 0
 }`
+
+---
+
+### GET Operations
+
+GetAllUsers:
+`https://dowstack.onrender.com/users/all`
+
+GetSingleUserById:
+`https://dowstack.onrender.com/users/:id`
+
+---
+
+### PUT Operations
+
+URL:`https://dowstack.onrender.com/users/settings`
+
+PUT(client):
+`{
+	"userId": ObjectId,
+	"updateData":{
+		"username":String,
+		"password":String,
+		"email":String,
+		"balance":number
+	}
+}`
+
+`userId` is required!
+
+`updateData` is an object with the files to update. You can change _username_, _password_, _email_ & _balance_ individualy or all together. For Example `userData:{balance:175}` only changes the balance to 175.
+
+---
+
+### DELETE Operations
+
+URL:`https://dowstack.onrender.com/users/delete`
+
+DELETE(client):
+`{
+	"userId": ObjectId
+}`
+
+`userId` is required!
+
+---
