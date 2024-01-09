@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 async function hashPw (password,workfactor){
     try{
         const hash = await bcrypt.hash(password,workfactor)
-        console.log("Successful hash ✅",hash)
+        // console.log("Successful hash ✅",hash)
         return hash
     }catch(err){
         console.log("ERROR❗️ hashing PW",err.message)
