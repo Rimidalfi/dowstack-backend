@@ -14,19 +14,19 @@ const userSchema = new mongoose.Schema({
 });
 
 const incomeSchema = new mongoose.Schema({
-    user_id:{type:String, required:true},
-    title:{type:String, required:true},
-    creationDate:Date.now,
-    updated:Date.now,
-    amount:{type:Number, required:true},
-    recurring:{type:Boolean, default:false}
+    user_id: { type: String, required: true },
+    title: { type: String, required: true },
+    creationDate: { type: Date, default: Date.now },
+    updated: { type: Date, default: Date.now },
+    amount: { type: Number, required: true },
+    recurring: { type: Boolean, default: false }
 });
 
 const expensesSchema = new mongoose.Schema({
     user_id:{type:String, required:true},
     title:{type:String, required:true},
-    creationDate:Date.now,
-    updated:Date.now,
+    creationDate: { type: Date, default: Date.now },
+    updated: { type: Date, default: Date.now },
     amount:{type:Number, required:true},
     recurring:{type:Boolean, default:false}
 });
@@ -34,8 +34,8 @@ const expensesSchema = new mongoose.Schema({
 const goalSchema = new mongoose.Schema({
     user_id:{type:String, required:true},
     title:{type:String, required:true},
-    creationDate:Date.now,
-    updated:Date.now,
+    creationDate: { type: Date, default: Date.now },
+    updated: { type: Date, default: Date.now },
     balance:{type:Number, required:true},
     goal:{type:Number, required:true},
     rate:{type:Number, required:true},
@@ -44,8 +44,8 @@ const goalSchema = new mongoose.Schema({
 const InterestSchema = new mongoose.Schema({
     user_id:{type:String, required:true},
     title:{type:String, required:true},
-    creationDate:Date.now,
-    updated:Date.now,
+    creationDate: { type: Date, default: Date.now },
+    updated: { type: Date, default: Date.now },
     interest:{type:Number, required:true},
     rate:{type:Number, required:true},
     capital:{type:Number, required:true},
@@ -55,8 +55,8 @@ const InterestSchema = new mongoose.Schema({
 const assetsSchema = new mongoose.Schema({
     user_id:{type:String, required:true},
     title:{type:String, required:true},
-    creationDate:Date.now,
-    updated:Date.now,
+    creationDate: { type: Date, default: Date.now },
+    updated: { type: Date, default: Date.now },
     value:{type:Number, required:true}
 });
 
