@@ -1,6 +1,17 @@
 # DowStack API:
 
-## Users:
+This API is designed to manage common _CRUD_ operations for the webapplication DowStack. The Base URL is :`https://dowstack.onrender.com/`
+There are the following operations at this point in time:
+
+- login `/login`
+- register `/register`
+- users `/users`
+- income `/in`
+- expenses `/out`
+
+<br>
+
+# User Operations:
 
 ### Login Operations (POST)
 
@@ -71,6 +82,59 @@ GetAllUsers:
 
 GetSingleUserById:
 `https://dowstack.onrender.com/users/:id`
+
+---
+
+### PUT Operations
+
+URL:`https://dowstack.onrender.com/users/settings`
+
+PUT(client):
+`{
+	"userId": ObjectId,
+	"updateData":{
+		"username":String,
+		"password":String,
+		"email":String,
+		"balance":number
+	}
+}`
+
+`userId` is required!
+
+`updateData` is an object with the files to update. You can change _username_, _password_, _email_ & _balance_ individualy or all together. For Example `userData:{balance:175}` only changes the balance to 175.
+
+---
+
+### DELETE Operations
+
+URL:`https://dowstack.onrender.com/users/delete`
+
+DELETE(client):
+`{
+	"userId": ObjectId
+}`
+
+`userId` is required!
+
+<br>
+
+---
+
+# Income:
+
+### GET Operations
+
+GetAllIncome:
+`https://dowstack.onrender.com/in/all`
+
+GetSingleUserById:
+`https://dowstack.onrender.com/in/users`
+
+GET(client):
+`{
+	"userId": ObjectId,
+}`
 
 ---
 

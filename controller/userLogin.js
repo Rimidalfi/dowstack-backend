@@ -10,10 +10,11 @@ const testLogin = {
     password:"plainjane1234"
 }
 
-const loginRespond = (msg,access,resCode)=>{
+const loginRespond = (msg,access,_id,resCode)=>{
     return{
         msg:msg,
         access:access,
+        _id:_id,
         resCode:resCode
     }
 };
@@ -32,20 +33,21 @@ const login = async (req,res)=>{
 
     const clientData = req.body
     const user = await readUserByMail(clientData)
-    // console.log(user)
+    // const userId = readUserByMail()
+    console.log(user)
     if (user !== null){
         console.log(`User ${user.username} found!`)
         const access = await userAuth(user,clientData)
         if (access){
             console.log("Access granted!")
-            res.json(loginRespond(msg1,true,0));
+            res.json(loginRespond(msg1,true,user._id,0));
         }else{
             console.log("Wrong password! Access denied!")
-            res.json(loginRespond(msg3,false,2));
+            res.json(loginRespond(msg3,false,null,2));
         }
     }else{
         console.log(`No user with this email found!`)
-        res.json(loginRespond(msg2,false,1));
+        res.json(loginRespond(msg2,false,null,1));
     }
 }
 export default login
