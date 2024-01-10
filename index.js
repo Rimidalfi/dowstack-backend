@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(cors());
-app.get('/',(req,res)=>res.send("Homer"))
+app.get('/',(req,res)=>res.send("Home"))
 app.use(express.json());
 
 app.use('/login',userLogin)
