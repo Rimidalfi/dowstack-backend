@@ -10,7 +10,7 @@ const oneUser = async (req,res)=>{
     // console.log("One User",userId)
     const singleUser = await readUserById(userId)
     // console.log("Single User",singleUser)
-    res.send(singleUser)
+    res.json(singleUser)
 };
 const updateUser = async (req,res)=>{
 

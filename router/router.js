@@ -2,6 +2,7 @@ import express from "express";
 import login from "../controller/userLogin.js";
 import registration from "../controller/UserRegistration.js";
 import {allUsers,deleteUser,oneUser,updateUser} from "../controller/userController.js";
+import { allIncome, createIncomeEntry, incomeById, incomeByUserId, updateIncomeById,deleteIncomeById} from "../controller/incomeController.js";
 
 
 const userRouter = express.Router();
@@ -20,8 +21,13 @@ userRouter.get('/all',allUsers);
 userRouter.get('/:id',oneUser);
 userRouter.put('/settings',updateUser);
 userRouter.delete('/delete',deleteUser);
+incomeRouter.get('/all',allIncome);
+incomeRouter.get('/user',incomeByUserId);
+incomeRouter.get('/', incomeById);
+incomeRouter.post('/',createIncomeEntry);
+incomeRouter.put('/update',updateIncomeById);
+incomeRouter.delete('/delete',deleteIncomeById);
 savingGoalRouter.get('/',(req,res)=> res.send("Saving Goals"));
-incomeRouter.get('/',(req,res)=> res.send("Income"));
 expensesRouter.get('/',(req,res)=> res.send("Expenses"));
 interestCalcRouter.get('/',(req,res)=> res.send("Calculator"));
 AssetRouter.get('/',(req,res)=> res.send("Assets"));
