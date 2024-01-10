@@ -3,7 +3,7 @@ import login from "../controller/userLogin.js";
 import registration from "../controller/UserRegistration.js";
 import {allUsers,deleteUser,oneUser,updateUser} from "../controller/userController.js";
 import { allIncome, createIncomeEntry, incomeById, incomeByUserId, updateIncomeById,deleteIncomeById} from "../controller/incomeController.js";
-
+import { allExpenses,createExpenseEntry,expenseById,expenseByUserId,updateExpenseById,deleteExpenseById } from "../controller/expensesController.js";
 
 const userRouter = express.Router();
 const savingGoalRouter = express.Router();
@@ -27,6 +27,12 @@ incomeRouter.get('/', incomeById);
 incomeRouter.post('/',createIncomeEntry);
 incomeRouter.put('/update',updateIncomeById);
 incomeRouter.delete('/delete',deleteIncomeById);
+expensesRouter.get('/all', allExpenses);
+expensesRouter.get('/user', expenseByUserId);
+expensesRouter.get('/', expenseById);
+expensesRouter.post('/', createExpenseEntry);
+expensesRouter.put('/update', updateExpenseById);
+expensesRouter.delete('/delete', deleteExpenseById);
 savingGoalRouter.get('/',(req,res)=> res.send("Saving Goals"));
 expensesRouter.get('/',(req,res)=> res.send("Expenses"));
 interestCalcRouter.get('/',(req,res)=> res.send("Calculator"));
