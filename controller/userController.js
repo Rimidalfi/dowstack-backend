@@ -2,16 +2,22 @@ import { readAllUsers,readUserById,updateUserById,deleteUserById} from "../mongo
 import { userExists } from "../mongo/user.js";
 import { hashPw } from "../encryption.js";
 
+function isMongoDBObjectId(id) {
+    return typeof id === 'string' && id.length === 24 && /^[0-9a-fA-F]+$/.test(id);
+}
+
 const allUsers = async (req,res)=>{
     res.send(await readAllUsers())
 };
 const oneUser = async (req,res)=>{
     const userId = req.params.id
-    // console.log("One User",userId)
-    const singleUser = await readUserById(userId)
-    // console.log("Single User",singleUser)
-    res.json(singleUser)
-};
+    if(isMongoDBObjectId(userId)){
+        const singleUser = await readUserById(userId)
+        singleUser !== null ? res.json(singleUser) :res.json({msg:"No User with This Id ! 🙅‍♂️"})
+    }else{
+        res.json({msg:"Error! Input a valid MongoDB ObjectId"})
+    };
+}
 const updateUser = async (req,res)=>{
 
     const clienteData = req.body;
