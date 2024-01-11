@@ -1,6 +1,7 @@
 # DowStack API:
 
-This API is designed to manage common _CRUD_ operations for the webapplication DowStack. The Base URL is :`https://dowstack.onrender.com/`
+This API is designed to manage common _CRUD_ operations for the webapplication DowStack. The Base URL is:`https://dowstack.onrender.com/`
+
 There are the following operations at this point in time:
 
 - login `/login`
