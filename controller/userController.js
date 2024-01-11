@@ -17,7 +17,7 @@ const oneUser = async (req,res)=>{
     }else{
         res.json({msg:"Error! Input a valid MongoDB ObjectId"})
     };
-};
+}
 const updateUser = async (req,res)=>{
 
     const clienteData = req.body;
