@@ -42,7 +42,7 @@ POST(client): `{username:String,email:String,password:String,balance:Number}`
 
 Return(server):`{
 	"msg": "Feedback Message",
-    "email": String
+    "user": String
 	"created": Boolean,
 	"resCode": number
 }`
