@@ -1,5 +1,9 @@
 import { readAllIncomes,readIncomeById,readIncomeByUserId,createIncome,updateIncome,deleteIncome} from "../mongo/income.js";
 
+function isMongoDBObjectId(id) {
+    return typeof id === 'string' && id.length === 24 && /^[0-9a-fA-F]+$/.test(id);
+}
+
 const allIncome = async (req,res)=>{
     res.send(await readAllIncomes())
 };
@@ -9,15 +13,24 @@ const createIncomeEntry = async(req,res)=>{
     res.json({msg:"income created ✨",income:income})
 };
 const incomeByUserId = async (req,res)=>{
-    const incomeData = await req.body;
-    const income = await readIncomeByUserId(incomeData.user_id);
-    res.json(income);
+    const userId = req.params.id
+    if(isMongoDBObjectId(userId)){
+        const userIncome = await readIncomeByUserId(userId)
+        userIncome.length !== 0 ? res.json(userIncome) :res.json({msg:"No Income Eentries with This Id ! 🙅‍♂️"})
+    }else{
+        res.json({msg:"Error! Input a valid MongoDB ObjectId"})
+    };
 };
 const incomeById = async (req,res)=>{
-    const incomeData = await req.body;
-    const income = await readIncomeById(incomeData._id);
-    res.json(income);
+    const incomeId = req.params.id
+    if(isMongoDBObjectId(incomeId)){
+        const income = await readIncomeById(incomeId)
+        income.length !== 0 ? res.json(income) :res.json({msg:"No Income Eentries with This Id ! 🙅‍♂️"})
+    }else{
+        res.json({msg:"Error! Input a valid MongoDB ObjectId"})
+    };
 };
+
 const updateIncomeById = async (req,res)=>{
     const incomeData = await req.body;
     const incomeId = incomeData._id;
