@@ -1,5 +1,10 @@
 import { readAllExpenses, readExpenseById, readExpenseByUserId, createExpense, updateExpense, deleteExpense } from "../mongo/expenses.js";
 
+function isMongoDBObjectId(id) {
+    return typeof id === 'string' && id.length === 24 && /^[0-9a-fA-F]+$/.test(id);
+}
+
+
 const allExpenses = async (req, res) => {
     res.send(await readAllExpenses());
 };
@@ -11,16 +16,37 @@ const createExpenseEntry = async (req, res) => {
 };
 
 const expenseByUserId = async (req, res) => {
-    const expenseData = await req.body;
-    const expense = await readExpenseByUserId(expenseData.user_id);
-    res.json(expense);
+    const userId = req.params.id;
+    if (isMongoDBObjectId(userId)) {
+        const userExpense = await readExpenseByUserId(userId);
+        userExpense.length !== 0 ? res.json(userExpense) : res.json({ msg: "No Expense Entries with This Id ! 🙅‍♂️" });
+    } else {
+        res.json({ msg: "Error! Input a valid MongoDB ObjectId" });
+    }
 };
 
 const expenseById = async (req, res) => {
-    const expenseData = await req.body;
-    const expense = await readExpenseById(expenseData._id);
-    res.json(expense);
+    const expenseId = req.params.id;
+    if (isMongoDBObjectId(expenseId)) {
+        const expense = await readExpenseById(expenseId);
+        expense.length !== 0 ? res.json(expense) : res.json({ msg: "No Expense Entries with This Id ! 🙅‍♂️" });
+    } else {
+        res.json({ msg: "Error! Input a valid MongoDB ObjectId" });
+    }
 };
+
+
+// const expenseByUserId = async (req, res) => {
+//     const expenseData = await req.body;
+//     const expense = await readExpenseByUserId(expenseData.user_id);
+//     res.json(expense);
+// };
+
+// const expenseById = async (req, res) => {
+//     const expenseData = await req.body;
+//     const expense = await readExpenseById(expenseData._id);
+//     res.json(expense);
+// };
 
 const updateExpenseById = async (req, res) => {
     const expenseData = await req.body;

@@ -129,40 +129,52 @@ DELETE(client):
 GetAllIncome:
 `https://dowstack.onrender.com/in/all`
 
-GetSingleUserById:
-`https://dowstack.onrender.com/in/users`
+GetAllIncomesByUserId:
+`https://dowstack.onrender.com/in/user/:id`
 
-GET(client):
-`{
-	"userId": ObjectId,
-}`
+GetIncomeById:
+`https://dowstack.onrender.com/in/:id`
 
 ---
 
+### POST Operations
+
+URL:`https://dowstack.onrender.com/in/`
+
+POST(client): `{user_id:String,title:String,amount:number,brecurring:Boolean}`
+
+EXAMPLE:
+
+`{
+	"user_id":"6595d4eaa045ef760f46dd15",
+	"title":"Rasen mähen",
+    "amount":"50",
+    "recurring": "true"
+}`
+
 ### PUT Operations
 
-URL:`https://dowstack.onrender.com/users/settings`
+URL:`https://dowstack.onrender.com/in/update`
 
 PUT(client):
-`{
-	"userId": ObjectId,
-	"updateData":{
-		"username":String,
-		"password":String,
-		"email":String,
-		"balance":number
-	}
+
+`{"_id":String,
+ "updateData":{
+	 "title": String,
+		"amount": Number,
+		"recurring": Boolean
+ }
 }`
 
 `userId` is required!
 
-`updateData` is an object with the files to update. You can change _username_, _password_, _email_ & _balance_ individualy or all together. For Example `userData:{balance:175}` only changes the balance to 175.
+`updateData` is an object with the files to update. You can change _title_, _amount_ & _recurring_ individualy or all together. For Example `userData:{amount:175}` only changes the amount to 175.
 
 ---
 
 ### DELETE Operations
 
-URL:`https://dowstack.onrender.com/users/delete`
+URL:`https://dowstack.onrender.com/in/delete`
 
 DELETE(client):
 `{
