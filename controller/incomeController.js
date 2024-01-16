@@ -9,6 +9,13 @@ const allIncome = async (req,res)=>{
 };
 const createIncomeEntry = async(req,res)=>{
     const incomeData = await req.body;
+    const date = incomeData.creationDate
+    const [year, month, day] = date.split("-")
+    incomeData.filterDate ={
+        year:year,
+        month:month,
+        day:day
+    }
     const income =  await createIncome(incomeData);
     res.json({msg:"income created ✨",income:income})
 };

@@ -11,6 +11,13 @@ const allExpenses = async (req, res) => {
 
 const createExpenseEntry = async (req, res) => {
     const expenseData = await req.body;
+    const date = expenseData.creationDate
+    const [year, month, day] = date.split("-")
+    expenseData.filterDate ={
+        year:year,
+        month:month,
+        day:day
+    }
     const expense = await createExpense(expenseData);
     res.json({ msg: "expense created ✨", expense: expense });
 };
