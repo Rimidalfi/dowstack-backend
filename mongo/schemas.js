@@ -38,7 +38,7 @@ const goalSchema = new mongoose.Schema({
     updated: { type: Date},
     balance:{type:Number, required:true},
     goal:{type:Number, required:true},
-    rate:{type:Number, required:true},
+    rate:{type:Number},
 });
 
 const InterestSchema = new mongoose.Schema({
