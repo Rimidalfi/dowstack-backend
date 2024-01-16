@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema({
 const incomeSchema = new mongoose.Schema({
     user_id: { type: String, required: true },
     title: { type: String, required: true },
-    creationDate: { type: Date, default: Date.now },
-    updated: { type: Date, default: Date.now },
+    creationDate: { type: Date, required: true },
+    updated: { type: Date},
     amount: { type: Number, required: true },
     recurring: { type: Boolean, default: false }
 });
@@ -25,8 +25,8 @@ const incomeSchema = new mongoose.Schema({
 const expensesSchema = new mongoose.Schema({
     user_id:{type:String, required:true},
     title:{type:String, required:true},
-    creationDate: { type: Date, default: Date.now },
-    updated: { type: Date, default: Date.now },
+    creationDate: { type: Date, required: true },
+    updated: { type: Date},
     amount:{type:Number, required:true},
     recurring:{type:Boolean, default:false}
 });
@@ -34,8 +34,8 @@ const expensesSchema = new mongoose.Schema({
 const goalSchema = new mongoose.Schema({
     user_id:{type:String, required:true},
     title:{type:String, required:true},
-    creationDate: { type: Date, default: Date.now },
-    updated: { type: Date, default: Date.now },
+    creationDate: { type: Date, required: true },
+    updated: { type: Date},
     balance:{type:Number, required:true},
     goal:{type:Number, required:true},
     rate:{type:Number, required:true},

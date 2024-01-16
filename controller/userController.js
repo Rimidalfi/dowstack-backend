@@ -42,7 +42,7 @@ const updateUser = async (req,res)=>{
         };
     }else{
         updateUserById(userId,updateData)
-        res.json({msg:"User Data updated!"})
+        res.json({msg:"User Data updated!",userId:userId,updateData:updateData})
     };
 };
 const deleteUser = async (req,res)=>{

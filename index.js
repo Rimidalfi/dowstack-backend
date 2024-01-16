@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use('/login',userLogin)
 app.use('/users',userRouter);
-app.use('/goals',savingGoalRouter);
+app.use('/savinggoals',savingGoalRouter);
 app.use('/in',incomeRouter);
 app.use('/out',expensesRouter);
 app.use('/calc',interestCalcRouter);
