@@ -17,6 +17,11 @@ const incomeSchema = new mongoose.Schema({
     user_id: { type: String, required: true },
     title: { type: String, required: true },
     creationDate: { type: Date, required: true },
+    filterDate:{
+        year:String,
+        month:String,
+        day:String,
+    },
     updated: { type: Date},
     amount: { type: Number, required: true },
     recurring: { type: Boolean, default: false }
@@ -26,6 +31,11 @@ const expensesSchema = new mongoose.Schema({
     user_id:{type:String, required:true},
     title:{type:String, required:true},
     creationDate: { type: Date, required: true },
+    filterDate:{
+        year:String,
+        month:String,
+        day:String,
+    },
     updated: { type: Date},
     amount:{type:Number, required:true},
     recurring:{type:Boolean, default:false}
